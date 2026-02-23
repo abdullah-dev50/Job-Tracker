@@ -7,5 +7,49 @@
 </head>
 <body>
     
+    <div class="container">
+
+        <h1>Job Application Tracker</h1>
+
+        <!-- Dashboard -->
+         <div class="dashboard">
+
+            <div class="card">
+                <p>Total</p>
+                <h2 id="total-count">0</h2>
+            </div>
+
+            <div class="card">
+                <p>Interview</p>
+                <h2 id="interview-count" class="green">0</h2>
+            </div>
+
+            <div class="card">
+                <p>Rejected</p>
+                <h2 id="rejected-count" class="red">0</h2>
+            </div>
+         </div>
+
+         <!-- Jobs Section -->
+          <div class="jobs-header">
+            <h3>Available Jobs</h3>
+            <span id="tab-count">0 jobs</span>
+          </div>
+
+          <!-- Tabs -->
+           <div class="tabs">
+            
+            <button onclick="changeTab('all')" class="active">All</button>
+            <button onclick="changeTab('interview')" >Interview</button>
+            <button onclick="changeTab('rejected')" >Rejected</button>
+
+           </div>
+
+           <div id="job-container"></div>
+
+    </div>
+
+    <script src="./script.js"></script>
+     
 </body>
 </html>
