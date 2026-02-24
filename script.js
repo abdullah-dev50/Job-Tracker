@@ -27,7 +27,7 @@ function render() {
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="empty">
-        <img src="./images/jobs.png" width="80" style="opacity:.6;margin-bottom:15px;">
+        <img src="images/jobs.png" width="80" style="opacity:.6;margin-bottom:15px;">
         <h3>No jobs available</h3>
         <p>Check back soon for new job opportunities</p>
       </div>`;
