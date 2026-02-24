@@ -1,0 +1,27 @@
+1. Difference between getElementById, getElementsByClassName, querySelector, querySelectorAll
+
+getElementById is used to select only ONE element using its unique id.
+getElementsByClassName is used to select multiple elements that share the same class name.
+querySelector is more Flexible because it uses CSS selectors and returns only the first matching element.
+querySelectorAll also uses CSS selectors but returns ALL matching elements as a list.
+
+2. Creating a new element in the DOM
+
+To create a new element in the DOM, we first use document.createElement().
+After creating it, we can add text, attributes or classes, then insert it into the page using methods like appendChild() or similar functions.
+
+3. Event Bubbling
+
+Event bubbling means when an event happens on a child element, it moves upward step by step to its Parent elements.
+For example, if a button inside a div is clicked, the event runs on the button first, then the div, then the body. This process continues upward.
+
+4. Event Delegation
+
+Event delegation means attaching one event listener to a parent element instead of adding listeners to every child element.
+The parent listens to events that bubble up from its children and handles them.
+This makes the code cleaner and also improves performance in many cases.
+
+5. preventDefault() vs stopPropagation()
+
+preventDefault() stops the browser’s default behaviour, like stopping a form from submitting or preventing a link from opening.
+stopPropagation() stops the event from moving upward to parent elements, so the Bubbling process stops there.

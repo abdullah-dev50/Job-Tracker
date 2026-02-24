@@ -50,7 +50,7 @@ function render() {
       <div class="job">
         <div style="display:flex;justify-content:space-between;align-items:center;">
           <h4>${job.company}</h4>
-          <span class="delete-icon" onclick="deleteJob(${job.id})">🗑️</span>
+          <span class="delete-icon" onclick="deleteJob(${job.id})"></span>
         </div>
 
         <p class="position">${job.position}</p>
@@ -69,3 +69,57 @@ function render() {
   }
 
   updateDashboard();
+
+  }
+
+// Update job status
+function setStatus(id, status) {
+  for (let i = 0; i < jobs.length; i++) {
+    if (jobs[i].id === id) {
+      jobs[i].status = status;
+      break;
+    }
+  }
+  render();
+}
+
+// Delete job
+function deleteJob(id) {
+  const newJobs = [];
+  for (let i = 0; i < jobs.length; i++) {
+    if (jobs[i].id !== id) {
+      newJobs.push(jobs[i]);
+    }
+  }
+  jobs = newJobs;
+  render();
+}
+
+// Change tabs
+function changeTab(tab) {
+  currentTab = tab;
+  const buttons = document.querySelectorAll(".tabs button");
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].classList.remove("active");
+  }
+  if (tab === "all") buttons[0].classList.add("active");
+  if (tab === "interview") buttons[1].classList.add("active");
+  if (tab === "rejected") buttons[2].classList.add("active");
+  render();
+}
+
+// Update dashboard counts
+function updateDashboard() {
+  let interviewCount = 0;
+  let rejectedCount = 0;
+  for (let i = 0; i < jobs.length; i++) {
+    if (jobs[i].status === "interview") interviewCount++;
+    if (jobs[i].status === "rejected") rejectedCount++;
+  }
+  document.getElementById("total-count").innerText = jobs.length;
+  document.getElementById("interview-count").innerText = interviewCount;
+  document.getElementById("rejected-count").innerText = rejectedCount;
+}
+
+// Initial render
+render();
