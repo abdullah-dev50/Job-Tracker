@@ -107,3 +107,29 @@ h1{text-align:center;}
 .rejected{background:#ef4444;color:white;}
 .not-applied{background:#6b7280;color:white;}
 
+.delete-icon{
+  display: inline-block;
+  width: 24px; 
+  height: 24px;
+  border: 2px solid #f1f2f4;
+  border-radius: 50%;
+
+  background-image: url('./Trash.png');
+  background-repeat: no-repeat;
+  background-position: center;     
+  background-size: 60%;           
+
+  cursor: pointer;
+}
+
+.short-desc{
+  margin:8px 0 0 0;
+  font-size:14px;
+  color:#374151;
+}
+
+.empty{
+  text-align:center;
+  margin-top:50px;
+  color:#666;
+}
