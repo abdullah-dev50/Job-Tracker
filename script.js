@@ -22,3 +22,50 @@ function render() {
       filtered.push(jobs[i]);
     }
   }
+  document.getElementById("tab-count").innerText = filtered.length + " jobs";
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="empty">
+        <img src="./images/jobs.png" width="80" style="opacity:.6;margin-bottom:15px;">
+        <h3>No jobs available</h3>
+        <p>Check back soon for new job opportunities</p>
+      </div>`;
+    updateDashboard();
+    return;
+  }
+
+  
+  // Render each job using classic for loop
+  for (let i = 0; i < filtered.length; i++) {
+    const job = filtered[i];
+
+    let badgeText = job.status === "not-applied" ? "NOT APPLIED" :
+                    job.status === "interview" ? "INTERVIEW" : "REJECTED";
+
+    let badgeClass = job.status === "not-applied" ? "not-applied" :
+                     job.status === "interview" ? "interview" : "rejected";
+
+    container.innerHTML += `
+      <div class="job">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h4>${job.company}</h4>
+          <span class="delete-icon" onclick="deleteJob(${job.id})">🗑️</span>
+        </div>
+
+        <p class="position">${job.position}</p>
+        <p class="details">${job.location} • ${job.type} • ${job.salary}</p>
+
+        <span class="badge ${badgeClass}">${badgeText}</span>
+        <p class="short-desc">${job.description}</p>
+
+        <div class="buttons">
+          <div class="left-buttons">
+            <button class="interview" onclick="setStatus(${job.id},'interview')">Interview</button>
+            <button class="rejected" onclick="setStatus(${job.id},'rejected')">Rejected</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  updateDashboard();
